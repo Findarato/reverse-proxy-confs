@@ -1,11 +1,12 @@
-## Version 2024/07/16
-# Ensure your DNS has a CNAME set for mealie and that mealie container is named.
+## Version 2024/06/04
+# make sure that your joplin container is named joplin
+# make sure that your dns has a cname set for joplin
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    server_name mealie.*;
+    server_name joplin.*;
 
     include /config/nginx/ssl.conf;
 
@@ -36,8 +37,8 @@ server {
 
         include /config/nginx/proxy.conf;
         include /config/nginx/resolver.conf;
-        set $upstream_app mealie;
-        set $upstream_port 9000;
+        set $upstream_app joplin;
+        set $upstream_port 22300;
         set $upstream_proto http;
         proxy_pass $upstream_proto://$upstream_app:$upstream_port;
 
